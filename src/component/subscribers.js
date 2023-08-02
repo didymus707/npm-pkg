@@ -3,6 +3,7 @@ import { BackIcon, Spinner } from "./icons";
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 import { fetchAllSubscribers } from "../services/request";
+// import Home from 'dowell-subscribe-newsletter';
 
 export const Subscribers = () => {
   const navigate = useNavigate();
@@ -60,6 +61,7 @@ export const Subscribers = () => {
           </>
         )}
       </div>
+      {/* <Home /> */}
     </div>
   );
 };
