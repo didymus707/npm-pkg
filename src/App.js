@@ -1,11 +1,13 @@
-import { Home } from "./component/home";
+import React from "react";
+import Home from "./component/home";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <div className="sm:container mx-auto">
-        <Home />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
   );
 }

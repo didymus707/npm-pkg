@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Subscribers } from "./component/subscribers";
 import { Subscribe } from "./component/subscribe";
@@ -20,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/subscribe",
-    element: <Subscribe />,
+    element: <Subscribe  />,
   },
   {
     path: "/unsubscribe",
