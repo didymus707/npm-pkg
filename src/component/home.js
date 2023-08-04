@@ -31,13 +31,13 @@ export const Home = () => {
         </div>
         <div className="px-12 pt-8 pb-12">
           <ul>
-            <li className="py-4">
+            <li className="py-4 hover:text-slate-400">
               <Link to={"/subscribers"}>List all subscribers</Link>
             </li>
-            <li>
+            <li className="hover:text-slate-400">
               <Link to={"/subscribe"}>Subscribe to newsletter</Link>
             </li>
-            <li className="py-4">
+            <li className="py-4 hover:text-slate-400">
               <Link to={"/unsubscribe"}>Unsubscribe from newsletter</Link>
             </li>
             {/* <li>
