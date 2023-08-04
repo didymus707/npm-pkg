@@ -1,13 +1,15 @@
 import React from "react";
-import { unsubscribe } from "../services/request";
 
-export const Home = ({
-  homeLink,
-  subscribersNav,
-  subscribeNav,
-  unsubscribeNav,
-  children,
-}) => {
+const Home = (props) => {
+  const {
+    homeLink,
+    subscribeNav,
+    subscribeLink,
+    unsubscribeNav,
+    subscribersNav,
+    subscribersLink,
+    unsubscribeLink,
+  } = props;
   return (
     <div className="sm:container mx-auto">
       <div className="mx-auto w-8/12 md:w-2/5 bg-[#282B34] mt-28 rounded-lg">
@@ -30,9 +32,9 @@ export const Home = ({
           </div>
           <div className="px-12 pt-8 pb-12">
             <ul>
-              <li className="py-4">{children}</li>
-              <li>{children}</li>
-              <li className="py-4">{children}</li>
+              <li className="py-4">{subscribersLink}</li>
+              <li>{subscribeLink}</li>
+              <li className="py-4">{unsubscribeLink}</li>
               {/* <li>
               <Link>Distribute Newsletter</Link>
             </li> */}
@@ -44,9 +46,4 @@ export const Home = ({
   );
 };
 
-{
-  /* <Link to={"/"}>Home</Link>
-            <Link to={"/subscribers"}>Subscribers</Link>
-            <Link to={"/subscribe"}>Subscribe</Link>
-            <Link to={"/unsubscribe"}>Unsubscribe</Link> */
-}
+export default Home

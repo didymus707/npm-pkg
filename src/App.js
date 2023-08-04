@@ -14,6 +14,15 @@ function App() {
               subscribeNav={<Link to={"/subscribe"}>Subscribe</Link>}
               subscribersNav={<Link to={"/subscribers"}>Subscribers</Link>}
               unsubscribeNav={<Link to={"/unsubscribe"}>Unsubscribe</Link>}
+              subscribersLink={
+                <Link to={"/subscribers"}>List all subscribers</Link>
+              }
+              subscribeLink={
+                <Link to={"/subscribe"}>Subscribe to newsletter</Link>
+              }
+              unsubscribeLink={
+                <Link to={"/unsubscribe"}>Unsubscribe from newsletter</Link>
+              }
             />
           }
         />
