@@ -1,15 +1,22 @@
 import React from "react";
+import { unsubscribe } from "../services/request";
 
-export const Home = ({ children = "react router link here with content" }) => {
+export const Home = ({
+  homeLink,
+  subscribersNav,
+  subscribeNav,
+  unsubscribeNav,
+  children,
+}) => {
   return (
     <div className="sm:container mx-auto">
       <div className="mx-auto w-8/12 md:w-2/5 bg-[#282B34] mt-28 rounded-lg">
         <nav className="text-white w-full pt-4 px-8">
           <ul className="flex">
-            <li className="hover:text-slate-400">{children}</li>
-            <li className="ml-auto hover:text-slate-400">{children}</li>
-            <li className="mx-4 hover:text-slate-400">{children}</li>
-            <li className="hover:text-slate-400">{children}</li>
+            <li className="hover:text-slate-400">{homeLink}</li>
+            <li className="ml-auto hover:text-slate-400">{subscribersNav}</li>
+            <li className="mx-4 hover:text-slate-400">{subscribeNav}</li>
+            <li className="hover:text-slate-400">{unsubscribeNav}</li>
           </ul>
         </nav>
         <div className="text-white">
@@ -36,3 +43,10 @@ export const Home = ({ children = "react router link here with content" }) => {
     </div>
   );
 };
+
+{
+  /* <Link to={"/"}>Home</Link>
+            <Link to={"/subscribers"}>Subscribers</Link>
+            <Link to={"/subscribe"}>Subscribe</Link>
+            <Link to={"/unsubscribe"}>Unsubscribe</Link> */
+}
