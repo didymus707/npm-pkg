@@ -1,6 +1,5 @@
 import React from "react";
 import { BackIcon, Spinner } from "./icons";
-import { MdOutlineKeyboardBackspace } from "react-icons/md";
 // import Home from 'dowell-subscribe-newsletter';
 
 export const Subscribers = (props) => {
@@ -11,11 +10,12 @@ export const Subscribers = (props) => {
 
   return (
     <div className=" w-8/12 mx-auto mt-8 ">
-      <MdOutlineKeyboardBackspace
+      <BackIcon
+        clickHandler={goBack}
+        classNames={[
+          "absolute cursor-pointer top-[32px] left-[20px] rounded-full bg-white",
+        ]}
         size="2rem"
-        color="black"
-        onClick={goBack}
-        className="absolute cursor-pointer top-[32px] left-[20px] rounded-full bg-white"
       />
       <div className="text-xl text-sky-700">
         <h1>List of Subscribers</h1>
