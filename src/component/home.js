@@ -32,9 +32,9 @@ const Home = (props) => {
           </div>
           <div className="px-12 pt-8 pb-12">
             <ul>
-              <li className="py-4">{subscribersLink}</li>
-              <li>{subscribeLink}</li>
-              <li className="py-4">{unsubscribeLink}</li>
+              <li className="py-4 hover:text-slate-400">{subscribersLink}</li>
+              <li className="hover:text-slate-400">{subscribeLink}</li>
+              <li className="py-4 hover:text-slate-400">{unsubscribeLink}</li>
               {/* <li>
               <Link>Distribute Newsletter</Link>
             </li> */}
@@ -46,4 +46,4 @@ const Home = (props) => {
   );
 };
 
-export default Home
+export default Home;
