@@ -4,7 +4,7 @@ import { MdOutlineKeyboardBackspace } from "react-icons/md";
 // import Home from 'dowell-subscribe-newsletter';
 
 export const Subscribers = (props) => {
-  const { goBack, subscribersList, isLoading, text } = props;
+  const { goBack, subscribersList, isLoading } = props;
   const {
     Details: { data },
   } = subscribersList ?? { Details: { data: [] } };
@@ -35,7 +35,9 @@ export const Subscribers = (props) => {
                   key={item.id}
                   className="mt-4 bg-white rounded-lg px-8 pt-4"
                 >
-                  <h1 className="text-black text-lg">{text}</h1>
+                  <h1 className="text-black text-lg">
+                    Subscribers Information
+                  </h1>
 
                   <div className="info divide-y divide-zinc-300">
                     <div className="topic pt-3">
@@ -54,7 +56,6 @@ export const Subscribers = (props) => {
           </>
         )}
       </div>
-      {/* <Home /> */}
     </div>
   );
 };

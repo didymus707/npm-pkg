@@ -13,10 +13,7 @@ function App() {
     fetchAllSubscribers({ type: "subscriberlist" })
   );
 
-  const goBack = () => {
-    console.log("I was clicked");
-    navigate(-1);
-  };
+  const goBack = () => navigate(-1);
 
   console.log("results", { results, isLoading });
 
@@ -50,7 +47,6 @@ function App() {
               goBack={goBack}
               isLoading={isLoading}
               subscribersList={results}
-              text="Subscribers Information"
             />
           }
         />
