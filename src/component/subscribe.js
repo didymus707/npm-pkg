@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { subscribe, unsubscribe } from "../services/request";
+import React from "react";
+// import { subscribe, unsubscribe } from "../services/request";
 import { BackIcon, Spinner } from "./icons";
 
 export const Subscribe = ({

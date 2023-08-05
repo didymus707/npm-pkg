@@ -1,28 +1,21 @@
 import React from "react";
 import { BackIcon, Spinner } from "./icons";
-import { useQuery } from "react-query";
-import { useNavigate } from "react-router-dom";
-import { fetchAllSubscribers } from "../services/request";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 // import Home from 'dowell-subscribe-newsletter';
 
-export const Subscribers = () => {
-  const navigate = useNavigate();
-  const { isLoading, data: results } = useQuery("fetch-all-subscribers", () =>
-    fetchAllSubscribers({ type: "subscriberlist" })
-  );
-
+export const Subscribers = (props) => {
+  const { goBack, subscribersList, isLoading, text } = props;
   const {
     Details: { data },
-  } = results ?? { Details: { data: [] } };
+  } = subscribersList ?? { Details: { data: [] } };
 
   return (
     <div className=" w-8/12 mx-auto mt-8 ">
-      <BackIcon
-        clickHandler={() => navigate(-1)}
-        classNames={[
-          "absolute cursor-pointer top-[20px] left-[20px] rounded-full bg-white",
-        ]}
+      <MdOutlineKeyboardBackspace
         size="2rem"
+        color="black"
+        onClick={goBack}
+        className="absolute cursor-pointer top-[32px] left-[20px] rounded-full bg-white"
       />
       <div className="text-xl text-sky-700">
         <h1>List of Subscribers</h1>
@@ -42,7 +35,7 @@ export const Subscribers = () => {
                   key={item.id}
                   className="mt-4 bg-white rounded-lg px-8 pt-4"
                 >
-                  <h1 className="text-black text-lg">Subscriber Information</h1>
+                  <h1 className="text-black text-lg">{text}</h1>
 
                   <div className="info divide-y divide-zinc-300">
                     <div className="topic pt-3">
