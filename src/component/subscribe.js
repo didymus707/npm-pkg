@@ -2,78 +2,33 @@ import React from "react";
 // import { subscribe, unsubscribe } from "../services/request";
 import { BackIcon, Spinner } from "./icons";
 
-export const Subscribe = ({
-  path,
-  email,
-  topic,
-  goBack,
-  status,
-  reason,
-  loading,
-  setEmail,
-  setTopic,
-  setStatus,
-  setReason,
-  setLoading,
-  handleSubscription,
-  handleUnsubscription,
-}) => {
+const regex =
+  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+export const Subscribe = (props) => {
+  const {
+    path,
+    email,
+    topic,
+    goBack,
+    status,
+    reason,
+    loading,
+    setEmail,
+    setTopic,
+    setStatus,
+    setReason,
+    handleSubscription,
+    handleUnsubscription,
+  } = props;
+
   const handleTopic = (e) => setTopic(e.target.value);
   const handleEmail = (e) => setEmail(e.target.value);
   const handleStatus = (e) => setStatus(e.target.value);
   const handleReason = (e) => setReason(e.target.value);
 
-  const validateInputs = () => !(topic && email && status);
-
-  // const handleSubscription = async () => {
-  //   const payload = {
-  //     email,
-  //     topic,
-  //     typeOfSubscriber: status,
-  //     params: { type: "subscribe" },
-  //   };
-  //   try {
-  //     setLoading(true);
-  //     const response = await subscribe(payload);
-  //     if (response?.success) {
-  //       setLoading(false);
-  //       setTopic("");
-  //       setEmail("");
-  //       setStatus(null);
-  //       setReason("");
-  //     } else {
-  //       setLoading(false);
-  //     }
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const handleUnsubscription = async () => {
-  //   const payload = {
-  //     email,
-  //     topic,
-  //     typeOfSubscriber: status,
-  //     reasonToUnsubscribe: reason,
-  //     params: { type: "unsubscribe" },
-  //   };
-  //   try {
-  //     setLoading(true);
-  //     const response = await unsubscribe(payload);
-  //     if (response?.success) {
-  //       setLoading(false);
-  //       setTopic("");
-  //       setEmail("");
-  //       setStatus(null);
-  //     } else {
-  //       setLoading(false);
-  //     }
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const validateInputs = () => !(topic && regex.test(email) && status);
+  console.log("validateInputs(", validateInputs());
 
   const action = () => {
     if (path.includes("unsubscribe")) {
@@ -155,8 +110,10 @@ export const Subscribe = ({
           <button
             type="submit"
             onClick={() => action()}
-            className="flex justify-center items-center rounded-lg w-full bg-sky-600 text-white py-2 disabled:cursor-not-allowed hover:disabled:bg-slate-100 hover:disabled:text-stone-500"
             disabled={validateInputs()}
+            className={`flex justify-center items-center rounded-lg w-full text-white py-2 disabled:cursor-not-allowed hover:disabled:bg-slate-100 hover:disabled:text-stone-500 ${
+              validateInputs() ? "bg-white text-stone-500 opacity-70" : "bg-sky-600"
+            }`}
           >
             {loading ? (
               <>

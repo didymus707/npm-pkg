@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Home from "./component/home";
 // import Home from 'dowell-subscription-newsletter'
 import { useQuery } from "react-query";
 import { Subscribe } from "./component/subscribe";
 import { Subscribers } from "./component/subscribers";
-import { fetchAllSubscribers } from "./services/request";
+import { fetchAllSubscribers, unsubscribe, subscribe } from "./services/request";
 import {
   Link,
   Route,
@@ -16,6 +16,11 @@ import {
 function App() {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [email, setEmail] = useState("");
+  const [topic, setTopic] = useState("");
+  const [reason, setReason] = useState("");
+  const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const { isLoading, data: results } = useQuery("fetch-all-subscribers", () =>
     fetchAllSubscribers({ type: "subscriberlist" })
@@ -23,7 +28,55 @@ function App() {
 
   const goBack = () => navigate(-1);
 
-  console.log("results", { results, isLoading });
+  const handleSubscription = async () => {
+    const payload = {
+      email,
+      topic,
+      typeOfSubscriber: status,
+      params: { type: "subscribe" },
+    };
+    try {
+      setLoading(true);
+      const response = await subscribe(payload);
+      if (response?.success) {
+        setLoading(false);
+        setTopic("");
+        setEmail("");
+        setStatus(null);
+        setReason("");
+      } else {
+        setLoading(false);
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleUnsubscription = async () => {
+    const payload = {
+      email,
+      topic,
+      typeOfSubscriber: status,
+      reasonToUnsubscribe: reason,
+      params: { type: "unsubscribe" },
+    };
+    try {
+      setLoading(true);
+      const response = await unsubscribe(payload);
+      if (response?.success) {
+        setLoading(false);
+        setTopic("");
+        setEmail("");
+        setStatus(null);
+      } else {
+        setLoading(false);
+      }
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -58,7 +111,26 @@ function App() {
             />
           }
         />
-        <Route path="/subscribe" element={<Subscribe goBack={goBack} />} />
+        <Route
+          path="/subscribe"
+          element={
+            <Subscribe
+              email={email}
+              topic={topic}
+              goBack={goBack}
+              path={pathname}
+              reason={reason}
+              status={status}
+              loading={loading}
+              setEmail={setEmail}
+              setTopic={setTopic}
+              setReason={setReason}
+              setStatus={setStatus}
+              handleSubscription={handleSubscription}
+              handleUnsubscription={handleUnsubscription}
+            />
+          }
+        />
       </Routes>
     </>
   );
