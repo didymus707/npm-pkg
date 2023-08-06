@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-// import Home from "./component/home";
+import Home from "./component/home";
 import { useQuery } from "react-query";
-// import { Subscribe } from "./component/subscribe";
-import { Home, Subscribers, Subscribe } from "dowell-subscription-newsletter";
-// import { Subscribers } from "./component/subscribers";
+import "react-toastify/dist/ReactToastify.css";
+import { Subscribe } from "./component/subscribe";
+import { Subscribers } from "./component/subscribers";
+import { toast } from "react-toastify";
+// import { Home, Subscribers, Subscribe } from "dowell-subscription-newsletter";
 import {
   fetchAllSubscribers,
   unsubscribe,
@@ -32,6 +34,18 @@ function App() {
 
   const goBack = () => navigate(-1);
 
+  const showSuccess = () => {
+    toast.success("Subscribed !", {
+      position: "bottom-center",
+    });
+  };
+
+  const showError = (msg) => {
+    toast.error(msg, {
+      position: "bottom-center",
+    });
+  };
+
   const handleSubscription = async () => {
     const payload = {
       email,
@@ -41,18 +55,16 @@ function App() {
     };
     try {
       setLoading(true);
-      const response = await subscribe(payload);
-      if (response?.success) {
-        setLoading(false);
-        setTopic("");
-        setEmail("");
-        setStatus(null);
-        setReason("");
-      } else {
-        setLoading(false);
-      }
-      console.log(response);
+      await subscribe(payload);
+      setLoading(false);
+      showSuccess();
+      setTopic("");
+      setEmail("");
+      setStatus(null);
+      setReason("");
     } catch (error) {
+      setLoading(false);
+      showError(error.message);
       console.log(error);
     }
   };
@@ -67,17 +79,15 @@ function App() {
     };
     try {
       setLoading(true);
-      const response = await unsubscribe(payload);
-      if (response?.success) {
-        setLoading(false);
-        setTopic("");
-        setEmail("");
-        setStatus(null);
-      } else {
-        setLoading(false);
-      }
-      console.log(response);
+      await unsubscribe(payload);
+      showSuccess();
+      setLoading(false);
+      setTopic("");
+      setEmail("");
+      setStatus(null);
     } catch (error) {
+      setLoading(false);
+      showError(error.message);
       console.log(error);
     }
   };

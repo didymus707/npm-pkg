@@ -1,5 +1,6 @@
 import React from "react";
 import { BackIcon, Spinner } from "./icons";
+import { ToastContainer } from "react-toastify";
 
 const regex =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -110,9 +111,9 @@ export const Subscribe = (props) => {
             type="submit"
             onClick={() => action()}
             disabled={validateInputs()}
-            className={`flex justify-center items-center rounded-lg w-full text-white py-2 disabled:cursor-not-allowed hover:disabled:bg-slate-100 hover:disabled:text-stone-500 ${
+            className={`flex justify-center items-center rounded-lg w-full text-white py-2  disabled:cursor-not-allowed hover:disabled:bg-slate-100 hover:disabled:text-stone-500  ${
               validateInputs()
-                ? "bg-white text-stone-500 opacity-70"
+                ? "bg-white text-slate-950 opacity-70"
                 : "bg-sky-600"
             }`}
           >
@@ -129,6 +130,7 @@ export const Subscribe = (props) => {
               <>{path.includes("unsubscribe") ? "Unsubscibe" : "Subscribe"}</>
             )}
           </button>
+          <ToastContainer />
         </div>
       </div>
     </div>
