@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import Home from "./component/home";
-// import Home from 'dowell-subscription-newsletter'
+// import Home from "./component/home";
 import { useQuery } from "react-query";
-import { Subscribe } from "./component/subscribe";
-import { Subscribers } from "./component/subscribers";
-import { fetchAllSubscribers, unsubscribe, subscribe } from "./services/request";
+// import { Subscribe } from "./component/subscribe";
+import { Home, Subscribers, Subscribe } from "dowell-subscription-newsletter";
+// import { Subscribers } from "./component/subscribers";
+import {
+  fetchAllSubscribers,
+  unsubscribe,
+  subscribe,
+} from "./services/request";
 import {
   Link,
   Route,
