@@ -1,5 +1,4 @@
 import React from "react";
-// import { subscribe, unsubscribe } from "../services/request";
 import { BackIcon, Spinner } from "./icons";
 
 const regex =
