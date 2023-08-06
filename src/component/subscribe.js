@@ -28,7 +28,6 @@ export const Subscribe = (props) => {
   const handleReason = (e) => setReason(e.target.value);
 
   const validateInputs = () => !(topic && regex.test(email) && status);
-  console.log("validateInputs(", validateInputs());
 
   const action = () => {
     if (path.includes("unsubscribe")) {
