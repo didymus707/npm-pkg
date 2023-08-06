@@ -119,6 +119,24 @@ function App() {
               topic={topic}
               goBack={goBack}
               path={pathname}
+              status={status}
+              loading={loading}
+              setEmail={setEmail}
+              setTopic={setTopic}
+              setStatus={setStatus}
+              handleSubscription={handleSubscription}
+              handleUnsubscription={handleUnsubscription}
+            />
+          }
+        />
+        <Route
+          path="/unsubscribe"
+          element={
+            <Subscribe
+              email={email}
+              topic={topic}
+              goBack={goBack}
+              path={pathname}
               reason={reason}
               status={status}
               loading={loading}

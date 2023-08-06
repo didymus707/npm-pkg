@@ -69,6 +69,7 @@ export const Subscribe = (props) => {
             className="form-input w-full rounded-lg border-transparent bg-gray-100 mb-6 shadow-sm placeholder-slate-400 focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           />
 
+          <span className="text-white text-lg mb-2">Status</span>
           <select
             required
             onChange={handleStatus}
@@ -111,7 +112,9 @@ export const Subscribe = (props) => {
             onClick={() => action()}
             disabled={validateInputs()}
             className={`flex justify-center items-center rounded-lg w-full text-white py-2 disabled:cursor-not-allowed hover:disabled:bg-slate-100 hover:disabled:text-stone-500 ${
-              validateInputs() ? "bg-white text-stone-500 opacity-70" : "bg-sky-600"
+              validateInputs()
+                ? "bg-white text-stone-500 opacity-70"
+                : "bg-sky-600"
             }`}
           >
             {loading ? (
