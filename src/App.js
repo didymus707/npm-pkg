@@ -1,13 +1,21 @@
 import React from "react";
 import Home from "./component/home";
 // import Home from 'dowell-subscription-newsletter'
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { Subscribers } from "./component/subscribers";
 import { useQuery } from "react-query";
+import { Subscribe } from "./component/subscribe";
+import { Subscribers } from "./component/subscribers";
 import { fetchAllSubscribers } from "./services/request";
+import {
+  Link,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const { isLoading, data: results } = useQuery("fetch-all-subscribers", () =>
     fetchAllSubscribers({ type: "subscriberlist" })
@@ -50,7 +58,7 @@ function App() {
             />
           }
         />
-        <Route path="/subscribe" />
+        <Route path="/subscribe" element={<Subscribe goBack={goBack} />} />
       </Routes>
     </>
   );

@@ -3,10 +3,10 @@ import React from "react";
 import { BackIcon, Spinner } from "./icons";
 
 export const Subscribe = ({
-  goTo,
   path,
   email,
   topic,
+  goBack,
   status,
   reason,
   loading,
@@ -84,7 +84,7 @@ export const Subscribe = ({
   return (
     <div className="container mx-auto w-4/5 md:w-2/5 h-full">
       <BackIcon
-        clickHandler={() => goTo(-1)}
+        clickHandler={goBack}
         classNames={[
           "absolute cursor-pointer top-[20px] left-[20px] rounded-full bg-white",
         ]}
