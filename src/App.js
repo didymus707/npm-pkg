@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import Home from "./component/home";
 import { useQuery } from "react-query";
 import "react-toastify/dist/ReactToastify.css";
-import { Subscribe } from "./component/subscribe";
-import { Subscribers } from "./component/subscribers";
 import { toast } from "react-toastify";
-// import { Home, Subscribers, Subscribe } from "dowell-subscription-newsletter";
+import { Home, Subscribers, Subscribe } from "dowell-subscription-newsletter";
 import {
   fetchAllSubscribers,
   unsubscribe,
@@ -64,6 +61,10 @@ function App() {
       setReason("");
     } catch (error) {
       setLoading(false);
+      setTopic("");
+      setEmail("");
+      setStatus(null);
+      setReason("");
       showError(error.message);
       console.log(error);
     }
@@ -87,6 +88,10 @@ function App() {
       setStatus(null);
     } catch (error) {
       setLoading(false);
+      setTopic("");
+      setEmail("");
+      setStatus(null);
+      setReason("");
       showError(error.message);
       console.log(error);
     }
